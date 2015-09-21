@@ -23,11 +23,6 @@ describe VideoInfo::Providers::Vkontakte do
       it { should be_falsey }
     end
 
-    context "with invalid url" do
-      let(:url) { 'http://vk.com just random data' }
-      it { should be_falsey }
-    end
-
     context "with spaces at end" do
       let(:url) { 'http://vk.com/video39576223_108370515        ' }
       it { should be_truthy }
@@ -42,6 +37,12 @@ describe VideoInfo::Providers::Vkontakte do
       let(:url) { '      http://vk.com/video39576223_108370515      ' }
       it { should be_truthy }
     end
+    
+    context "url without http/https" do
+      let(:url) { 'vk.com/video39576223_108370515' }
+      it { should be_truthy }
+    end
+
   end
 
   describe "#available?" do
@@ -95,6 +96,7 @@ describe VideoInfo::Providers::Vkontakte do
     its(:video_owner)      { should eq '43640822' }
     its(:video_id)         { should eq '168790809' }
     its(:title)            { should eq 'UDC open cup 2014/ 3 place / Saley Daria (solo)' }
+    its(:date)             { should eq '2 июн 2014 в 9:04' }
   end
 
   context "with video kirill.lyanoi?z=video2152699_168591741%2F56fd229a9dfe2dcdbe", :vcr do
@@ -131,6 +133,7 @@ describe VideoInfo::Providers::Vkontakte do
     its(:width)            { should eq 320 }
     its(:height)           { should eq 240 }
     its(:view_count)       { should be > 10 }
+    its(:date)             { should eq '1 июн 2009 в 21:41' }
   end
 
   context "with video video-54799401_165822734", :vcr do
@@ -140,6 +143,20 @@ describe VideoInfo::Providers::Vkontakte do
     its(:video_owner)      { should eq '-54799401' }
     its(:video_id)         { should eq '165822734' }
     its(:title)            { should eq 'SpaceGlasses are the future of computing' }
+    its(:date)             { should eq '21 авг 2013 в 17:20' }
+  end
+
+  context "with video video-54799401_165822734", :vcr do
+    subject { VideoInfo.new('http://vk.com/video-54799401_165822734') }
+
+    its(:provider)         { should eq 'Vkontakte' }
+    its(:video_owner)      { should eq '-54799401' }
+    its(:video_id)         { should eq '165822734' }
+    its(:title)            { should eq 'SpaceGlasses are the future of computing' }
+    its(:thumbnail_small)  { should eq 'https://pp.vk.me/c528523/u50058727/video/l_b5c56ff2.jpg' }
+    its(:thumbnail_medium) { should eq 'https://pp.vk.me/c528523/u50058727/video/l_b5c56ff2.jpg' }
+    its(:thumbnail_large)  { should eq 'https://pp.vk.me/c528523/u50058727/video/l_b5c56ff2.jpg' }
+    its(:date)             { should eq '21 авг 2013 в 17:20' }
   end
 
 end

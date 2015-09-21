@@ -13,10 +13,7 @@ class VideoInfo
       end
 
       def self.usable?(url)
-        url.strip!
-        vkontakte = !!(url =~ /\A(http|https):\/\/(vk\.com)|(vkontakte\.ru)\z/)
-        valid = !!(url =~ /\A#{URI::regexp(['http', 'https'])}\z/)
-        vkontakte && valid
+        url =~ /(vk\.com)|(vkontakte\.ru)/
       end
 
       def provider
@@ -73,6 +70,22 @@ class VideoInfo
 
       def available?
         !%w[403 404 302 401].include?(_response_code)
+      end
+
+      def thumbnail_small
+        data[/<img.*src=\"([^\"]*)\"/, 1]
+      end
+
+      def thumbnail_medium
+        data[/<img.*src=\"([^\"]*)\"/, 1]
+      end
+
+      def thumbnail_large
+        data[/<img.*src=\"([^\"]*)\"/, 1]
+      end
+
+      def date
+        data[/mv_date_views_wrap.*>(.*)<span class=\"mv_date_views_delim/, 1].strip
       end
 
       private

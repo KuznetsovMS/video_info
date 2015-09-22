@@ -10,6 +10,7 @@ class VideoInfo
       def initialize(url, options = {})
         super(url, options)
         @url.strip!
+        @url.prepend('https://') unless url =~ /\A#{URI::regexp(['http', 'https'])}\z/
       end
 
       def self.usable?(url)

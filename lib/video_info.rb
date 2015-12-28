@@ -8,7 +8,7 @@ class VideoInfo
   extend Forwardable
 
   PROVIDERS = %w[
-    Dailymotion Vkontakte Wistia
+    Coub Dailymotion Vkontakte Wistia
     Vimeo VimeoPlaylist
     Youtube YoutubePlaylist
   ]

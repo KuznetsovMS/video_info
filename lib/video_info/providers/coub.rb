@@ -59,12 +59,8 @@ class VideoInfo
         data['tags'].map { |t| t['title'] }
       end
 
-      def embed_options
-        "?autoplay=false&muted=false"
-      end
-
       def embed_url
-        "//coub.com/embed/#{video_id}#{embed_options}"
+        "//coub.com/embed/#{video_id}"
       end
 
       def date
@@ -94,7 +90,10 @@ class VideoInfo
       end
 
       def _default_url_attributes
-        {}
+        {
+          autoplay: true,
+          muted: false
+        }
       end
 
     end

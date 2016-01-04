@@ -34,21 +34,29 @@ class VideoInfo
         define_method(method) { nil }
       end
 
+      # micro — 70x46 pixels;
+      # tiny — 112x85 pixels;
+      # age_restrcited — 640x640 pixels; this image have the restriction sign;
+      # ios_large — 600x525 pixels; intended to be dispayed on iOS devices;
+      # big — 1280x1280 pixels;
+      # med — 640x500 pixels;
+      # small — 400x400 pixels;
+      # pinterest — 600x600 pixels; intended to be dispayed in pinterest web site;
       def thumbnail(size)
         image_versions = data['image_versions']
         image_versions['template'].gsub('%{version}', size)
       end
 
       def thumbnail_small
-        thumbnail('small')
+        thumbnail('micro')
       end
 
       def thumbnail_medium
-        thumbnail('med')
+        thumbnail('tiny')
       end
 
       def thumbnail_large
-        thumbnail('big')
+        thumbnail('small')
       end
 
       def keywords

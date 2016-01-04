@@ -48,9 +48,9 @@ describe VideoInfo::Providers::Coub do
     its(:keywords)         { should eq 'gopro, hero 2, hero 3, hero 3 plus, hero 4, hero camera, hd camera, stoked, rad, switzerland, wingsuit, wingsuit flying' }
     its(:embed_url)        { should eq '//coub.com/embed/57uv0' }
     its(:embed_code)       { should eq '<iframe src="//coub.com/embed/57uv0?autoplay=true&muted=false" frameborder="0"></iframe>' }
-    its(:thumbnail_small)  { should eq 'https://coubsecure-a.akamaihd.net/get/b50/p/coub/simple/cw_image/ee37e99a404/dfb0d7d749343dc38c403/small_1425133311_00032.jpg' }
-    its(:thumbnail_medium) { should eq 'https://coubsecure-a.akamaihd.net/get/b50/p/coub/simple/cw_image/ee37e99a404/dfb0d7d749343dc38c403/med_1425133311_00032.jpg' }
-    its(:thumbnail_large)  { should eq 'https://coubsecure-a.akamaihd.net/get/b50/p/coub/simple/cw_image/ee37e99a404/dfb0d7d749343dc38c403/big_1425133311_00032.jpg' }
+    its(:thumbnail_small)  { should eq 'https://coubsecure-a.akamaihd.net/get/b50/p/coub/simple/cw_image/ee37e99a404/dfb0d7d749343dc38c403/micro_1425133311_00032.jpg' }
+    its(:thumbnail_medium) { should eq 'https://coubsecure-a.akamaihd.net/get/b50/p/coub/simple/cw_image/ee37e99a404/dfb0d7d749343dc38c403/tiny_1425133311_00032.jpg' }
+    its(:thumbnail_large)  { should eq 'https://coubsecure-a.akamaihd.net/get/b50/p/coub/simple/cw_image/ee37e99a404/dfb0d7d749343dc38c403/small_1425133311_00032.jpg' }
     its(:date)             { should eq '28.02.2015' }
     its(:duration)         { should eq 10 }
     its(:view_count)       { should be > 24373 }
